@@ -44,20 +44,20 @@ public class UserController {
         cartRepository.save(cart);
         user.setCart(cart);
 
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
-        random.nextBytes(salt);
-        if (createUserRequest.getPassword().length() < 7 ||
-                !createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())) {
-            log.error("Error during password creation");
-            log.debug("Either length is less than 7 or pass and conf pass do not match");
-            //System.out.println("Error - Either length is less than 7 or pass and conf pass do not match. Unable to create ",
-            //		createUserRequest.getUsername());
+        try {
+            if (createUserRequest.getPassword().length() < 7 ||
+                    !createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())) {
+                log.error("Error during password creation");
+                log.debug("Either length is less than 7 or pass and conf pass do not match");
+                //System.out.println("Error - Either length is less than 7 or pass and conf pass do not match. Unable to create ",
+                //		createUserRequest.getUsername());
+                return ResponseEntity.badRequest().build();
+            }
+        }catch (NullPointerException e){
+            log.debug("Null value in either password or confirm password");
             return ResponseEntity.badRequest().build();
         }
-        String password = (createUserRequest.getPassword() + Arrays.toString(salt));
-        user.setSalt(Arrays.toString(salt));
-        user.setPassword(bCryptPasswordEncoder.encode(password));
+        user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
         userRepository.save(user);
         log.info("user successfully saved");
         return ResponseEntity.ok(user);

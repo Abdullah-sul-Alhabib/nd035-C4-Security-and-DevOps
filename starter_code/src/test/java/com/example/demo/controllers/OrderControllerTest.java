@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -23,7 +22,6 @@ import static org.mockito.Mockito.when;
 public class OrderControllerTest {
     private static final String USERNAME = "testUser";
     private static final String PASSWORD = "P4ssword";
-    private static final String SALT = "Salt";
     private static final Item SQUARE_ITEM = new Item(0L,"Square Widget", new BigDecimal("1.99"), "A widget that is square");;;
 
 
@@ -43,7 +41,7 @@ public class OrderControllerTest {
         List<Item> items = new ArrayList<>();
         items.add(SQUARE_ITEM);
         Cart cart = new Cart(0L,items,new User(),SQUARE_ITEM.getPrice());
-        User user = new User(0L,USERNAME,SALT,PASSWORD,new Cart());
+        User user = new User(0L,USERNAME, PASSWORD,new Cart());
         user.setCart(cart);
         cart.setUser(user);
 
@@ -64,7 +62,7 @@ public class OrderControllerTest {
         List<Item> items = new ArrayList<>();
         items.add(SQUARE_ITEM);
         Cart cart = new Cart(0L,items,new User(),SQUARE_ITEM.getPrice());
-        User user = new User(0L,USERNAME,SALT,PASSWORD,new Cart());
+        User user = new User(0L,USERNAME, PASSWORD,new Cart());
         user.setCart(cart);
         cart.setUser(user);
 

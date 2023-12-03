@@ -24,7 +24,6 @@ import static org.mockito.Mockito.when;
 public class CartControllerTest {
     private static final String USERNAME = "testUser";
     private static final String PASSWORD = "P4ssword";
-    private static final String SALT = "Salt";
 
     private CartController cartController;
     private final UserRepository userRepository = mock(UserRepository.class);
@@ -52,7 +51,6 @@ public class CartControllerTest {
 
         user.setId(0L);
         user.setUsername(USERNAME);
-        user.setSalt(SALT);
         user.setPassword(PASSWORD);
         user.setCart(cart);
 
@@ -98,7 +96,6 @@ public class CartControllerTest {
 
         user.setId(0L);
         user.setUsername(USERNAME);
-        user.setSalt(SALT);
         user.setPassword(PASSWORD);
         user.setCart(cart);
 

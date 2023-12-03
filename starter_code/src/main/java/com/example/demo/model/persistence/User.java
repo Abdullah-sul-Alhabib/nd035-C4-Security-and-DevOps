@@ -19,9 +19,6 @@ public class User {
 	@JsonProperty
 	private String username;
 
-	@Column(nullable = false)
-	private String salt;
-
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Column(nullable = false)
 	private String password;
@@ -34,21 +31,13 @@ public class User {
 	public User() {
 	}
 
-	public User(long id, String username, String salt, String password, Cart cart) {
+	public User(long id, String username, String password, Cart cart) {
 		this.id = id;
 		this.username = username;
-		this.salt = salt;
 		this.password = password;
 		this.cart = cart;
 	}
 
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
 	public String getPassword(){
 		return password;
 	}

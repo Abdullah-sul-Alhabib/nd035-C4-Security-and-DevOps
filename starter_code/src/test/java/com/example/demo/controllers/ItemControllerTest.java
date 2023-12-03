@@ -20,7 +20,6 @@ import static org.mockito.Mockito.when;
 public class ItemControllerTest {
     private static final Item SQUARE_ITEM = new Item(0L,"Square Widget", new BigDecimal("1.99"), "A widget that is square");;
     private static final Item ROUND_ITEM =new Item(1L, "Round Widget", new BigDecimal("2.99"), "A widget that is round");;
-    private static final BigDecimal TOTAL= SQUARE_ITEM.getPrice().add(ROUND_ITEM.getPrice());
     private ItemController itemController;
     private final ItemRepository itemRepository = mock(ItemRepository.class);
 
