@@ -40,7 +40,17 @@ public class Cart {
 	@Column
 	@JsonProperty
 	private BigDecimal total;
-	
+
+	public Cart(Long id, List<Item> items, User user, BigDecimal total) {
+		this.id = id;
+		this.items = items;
+		this.user = user;
+		this.total = total;
+	}
+
+	public Cart() {
+	}
+
 	public BigDecimal getTotal() {
 		return total;
 	}

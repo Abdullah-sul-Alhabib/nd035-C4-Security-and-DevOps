@@ -23,8 +23,18 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.25</version>
+			<artifactId>log4j-over-slf4j</artifactId>
+
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j.impl</groupId>
+					<artifactId>Log4jLoggerFactory</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
