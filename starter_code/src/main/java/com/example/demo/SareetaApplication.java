@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class SareetaApplication {
 	private static final Logger log = LoggerFactory.getLogger(SareetaApplication.class);
+	private static final Logger splunkLogger = LoggerFactory.getLogger("splunk.logger");
+
 
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder(){
@@ -24,6 +26,7 @@ public class SareetaApplication {
 		try {
 			SpringApplication.run(SareetaApplication.class, args);
 			log.info("Application running.");
+			splunkLogger.info("Splunk logger running test");
 		} catch (Exception e){
 			log.error("Fatal error during application launch");
 		}

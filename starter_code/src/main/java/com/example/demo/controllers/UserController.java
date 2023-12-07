@@ -12,9 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.SecureRandom;
-import java.util.Arrays;
-
 @RestController
 @RequestMapping("/api/user")
 public class UserController {

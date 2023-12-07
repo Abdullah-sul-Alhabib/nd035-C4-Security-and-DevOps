@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {
+	private static final Logger splunkLogger = LoggerFactory.getLogger("splunk.logger");
 	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 
 	@Autowired
@@ -35,6 +36,7 @@ public class OrderController {
 		UserOrder order = UserOrder.createFromCart(user.getCart());
 		orderRepository.save(order);
 		log.info("Submission successful for "+username+".");
+		splunkLogger.info("Sale successful, amount = "+order.getTotal());
 		return ResponseEntity.ok(order);
 	}
 	

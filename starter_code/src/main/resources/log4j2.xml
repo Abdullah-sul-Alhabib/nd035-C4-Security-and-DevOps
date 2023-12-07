@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<Configuration status="info" name="example">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%style{%d{ISO8601}} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{10}}{bright,yellow}: %msg%n%throwable" />
+        </Console>
+        <SplunkHttp
+                name="nd-ecommerce-logs"
+                url="http://localhost:8088"
+                host="localhost"
+                type="raw"
+                source="nd-ecommerce-logs"
+                sourcetype="log4j"
+                token="5559d69a-f56c-454f-b6e0-a4a00edd8ad3"
+                index="ecommerce_dev_api"
+                disableCertificateValidation="true"
+        >
+            <PatternLayout pattern="%m"/>
+        </SplunkHttp>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="nd-ecommerce-logs" />
+        </Root>
+    </Loggers>
+</Configuration>
+<?xml version="1.0" encoding="UTF-8"?>-->
+<Configuration>
+<Appenders>
+    <Console name="console" target="SYSTEM_OUT">
+        <PatternLayout
+                pattern="%style{%d{ISO8601}} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{10}}{bright,yellow}: %msg%n%throwable" />
+    </Console>
+    <SplunkHttp
+            name="splunkhttp"
+            url="http://localhost:8088"
+            token="451bec9d-283b-456c-bbf1-5949a72ba78f"
+            host="localhost"
+            index="ecommerce_dev_api"
+            source="splunkhttp"
+            sourcetype="log4j"
+            messageFormat="text"
+            disableCertificateValidation="true">
+        <PatternLayout pattern="%m" />
+    </SplunkHttp>
+
+</Appenders>
+
+<Loggers>
+    <!-- LOG everything at INFO level -->
+    <Root level="info">
+        <AppenderRef ref="console" />
+        <AppenderRef ref="splunkhttp" />
+    </Root>
+</Loggers>
+</Configuration>
